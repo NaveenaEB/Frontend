@@ -10,20 +10,23 @@ module.exports = {
         new ModuleFederationPlugin({
           name: 'shell',
           filename: 'remoteEntry.js',
-          remotes: {
-            product_remote: 'product_remote@http://localhost:3001/remoteEntry.js'
-          },
           shared: {
             react: {
               singleton: true,
+              eager: false,
+              strictVersion: false,
               requiredVersion: deps.react
             },
             'react-dom': {
               singleton: true,
+              eager: false,
+              strictVersion: false,
               requiredVersion: deps['react-dom']
             },
             'react-router-dom': {
               singleton: true,
+              eager: false,
+              strictVersion: false,
               requiredVersion: deps['react-router-dom']
             }
           }

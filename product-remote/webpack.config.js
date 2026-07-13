@@ -42,8 +42,8 @@ module.exports = {
         './ProductDashboard': './src/ProductDashboard'
       },
       shared: {
-        react: { singleton: true, eager: false, requiredVersion: '^18.2.0' },
-        'react-dom': { singleton: true, eager: false, requiredVersion: '^18.2.0' }
+        react: { singleton: true, eager: false, strictVersion: false, requiredVersion: '^18.2.0' },
+        'react-dom': { singleton: true, eager: false, strictVersion: false, requiredVersion: '^18.2.0' }
       }
     }),
     new HtmlWebpackPlugin({
