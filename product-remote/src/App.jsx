@@ -2,8 +2,8 @@ import React from 'react';
 
 const App = () => (
   <div style={{ padding: '2rem' }}>
-    <h1>Product Remote</h1>
-    <p>Module Federation remote is running.</p>
+    <h1>Product Dashboard</h1>
+    <p>Product remote app is running.</p>
   </div>
 );
 

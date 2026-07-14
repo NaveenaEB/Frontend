@@ -37,7 +37,7 @@ module.exports = {
   },
   devServer: {
     static: path.join(__dirname, 'dist'),
-    port: 3001,
+    port: 3000,
     hot: false,
     historyApiFallback: true,
     headers: {
@@ -48,23 +48,30 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'productRemote',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './ProductApp': './src/App',
+      name: 'host',
+      remotes: {
+        productRemote: 'productRemote@http://localhost:3001/remoteEntry.js',
+        usersRemote: 'usersRemote@http://localhost:3002/remoteEntry.js',
+        salaryRemote: 'salaryRemote@http://localhost:3003/remoteEntry.js',
       },
       shared: {
         react: {
           singleton: true,
           requiredVersion: deps.react,
           strictVersion: false,
-          eager: false,
+          eager: true,
         },
         'react-dom': {
           singleton: true,
           requiredVersion: deps['react-dom'],
           strictVersion: false,
-          eager: false,
+          eager: true,
+        },
+        'react-router-dom': {
+          singleton: true,
+          requiredVersion: deps['react-router-dom'],
+          strictVersion: false,
+          eager: true,
         },
       },
     }),
