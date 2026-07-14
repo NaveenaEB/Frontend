@@ -14,6 +14,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  optimization: {
+    runtimeChunk: false,
+  },
   module: {
     rules: [
       {
@@ -68,5 +71,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
+    'react-refresh/babel'
   ],
 };
