@@ -34,7 +34,7 @@ module.exports = {
   },
   devServer: {
     static: path.join(__dirname, 'dist'),
-    port: 3001,
+    port: 3000,
     hot: true,
     historyApiFallback: true,
     headers: {
@@ -45,10 +45,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'productRemote',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './ProductApp': './src/App',
+      name: 'host',
+      remotes: {
+        productRemote: 'productRemote@http://localhost:3001/remoteEntry.js',
       },
       shared: {
         react: {
