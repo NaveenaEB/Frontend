@@ -37,11 +37,11 @@ export const AuthProvider = ({ children }) => {
         },
       });
 
-      const { access_token, user } = response?.data?.data;
+      const { access_token } = response?.data?.data;
       localStorage.setItem('token', access_token);
-      localStorage.setItem('user', user);
+      localStorage.setItem('user', JSON.stringify(response?.data?.data.userId));
       api.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
-      setUser(user);
+      setUser(response?.data?.data.userId);
       return response.data;
     } catch (error) {
       console.error('Login error:', error.response?.data || error.message);
